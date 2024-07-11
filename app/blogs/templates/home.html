@@ -1,0 +1,166 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blogs-by Hackers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      <style>
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+    </style>
+  </head>
+
+  <body>
+  <nav class="navbar fixed-top "  style="background-color: #253044;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"  style="color:white;"><strong>Hacks-Forum</strong></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel"  style="background-color: #e3f2fd;">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel" >Hack</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body"  style="background-color: #e3f2fd;">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="publish/">Publish Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Blogs</a>
+          </li>
+        <form class="d-flex mt-3" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"  style="background-color: #e3f2fd;">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <!-- SVG Icons -->
+      <!-- ... -->
+    </svg>
+
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+      <!-- Theme Toggle Dropdown -->
+      <!-- ... -->
+    </div>
+
+    <div class="container">
+      <header class="border-bottom lh-1 py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-4 pt-1">
+            <a class="link-secondary" href="#">Subscribe</a>
+          </div>
+          <div class="col-4 text-center">
+            <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">Hacks Forum</a> <!-- Update with your forum's name -->
+          </div>
+          <div class="col-4 d-flex justify-content-end align-items-center">
+            <a class="link-secondary" href="#" aria-label="Search">
+              <!-- Search Icon -->
+              <!-- ... -->
+            </a>
+            <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a> <!-- Update if needed -->
+          </div>
+        </div>
+      </header>
+
+      <div class="nav-scroller py-1 mb-3 border-bottom">
+        <nav class="nav nav-underline justify-content-between " style="font-weight: 600;">
+          <!-- Navigation Links -->
+          <a class="nav-item nav-link link-body-emphasis active" href="#">News</a> <!-- Update with your sections -->
+          <a class="nav-item nav-link link-body-emphasis" href="#">Tech Leaks</a>
+          <a class="nav-item nav-link link-body-emphasis" href="#">Political Leaks</a>
+          <a class="nav-item nav-link link-body-emphasis" href="#">World Leaks</a>
+          <a class="nav-item nav-link link-body-emphasis" href="#">Finance Leaks</a>
+          <a class="nav-item nav-link link-body-emphasis" href="#">ISIS Leaks</a>
+          <a class="nav-item nav-link link-body-emphasis" href="#">Tools</a>
+          <!-- Add more as needed -->
+        </nav>
+      </div>
+    </div>
+<main class="container">
+  <div class="position-relative p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+    <img src="{% static 'images/isis1.jpg' %}" class="img-fluid rounded" alt="Featured Hack Image"
+         style="width: 100%; height: 300px; object-fit: cover;">
+    <div class="text-overlay" style="color: red; margin-top: 20px;">
+      <div class="col-lg-6 px-0">
+        <h1 class="display-6 fst-italic" style="font-weight: 600; color: black;">Featured Hack of the Month</h1>
+        <p class="lead my-4 fst-italic" style="font-weight: 900; "><strong>Hey ISIS! Check Out How 'Idiot' Anonymous Hackers Can Disrupt your Online Propaganda</strong></p>
+        <p class="lead mb-0" ><a href="#" class="text-body-emphasis fw-bold" >Continue reading...</a></p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for Blog in home %}
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="/media/{{Blog.blog_image}}" class="bd-placeholder-img card-img-top" width="100%" height="225" style="object-fit: cover;" alt="Thumbnail">
+                    <div class="card-body">
+                        <p class="card-text">{{Blog.blog_name}}</p>
+                        <p class="card-text">{{Blog.blog_description}}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-body-secondary">{{Blog.author}}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+    <div class="row mb-2 " >
+        <div class="col-md-6" style="padding-top: 20px;" >
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-primary-emphasis">Latest Leak</strong> <!-- Update section titles -->
+              <h3 class="mb-0">New Ransomware Group Exploiting Veeam Backup Software Vulnerability</h3>
+              <div class="mb-1 text-body-secondary">Jul 10, 2024</div>
+              <p class="card-text mb-auto">Singapore-headquartered Group-IB, which discovered the threat actor in early April 2024, said the modus operandi involved the exploitation of CVE-2023-27532 (CVSS score: 7.5)
+                to carry out the malicious activities.</p>
+              <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                Continue reading
+                <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+              </a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+              <!-- Thumbnail -->
+              <!-- ... -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" style="padding-top: 20px;">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-success-emphasis">Latest leak</strong> <!-- Update section titles -->
+              <h3 class="mb-0">Microsoft's July Update Patches 143 Flaws, Including Two Actively Exploited</h3>
+              <div class="mb-1 text-body-secondary">Jul 10, 2024</div>
+              <p class="mb-auto">Five out of the 143 flaws are rated Critical, 136 are rated Important, and four are rated Moderate in severity. The fixes are in addition to 33 vulnerabilities that have been addressed in the Chromium-based Edge browser over the past month.</p>
+              <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                Continue reading
+                <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+              </a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+              <!-- Thumbnail -->
+              <!-- ... -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</html>
