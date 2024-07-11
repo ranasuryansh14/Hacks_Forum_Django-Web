@@ -40,12 +40,14 @@ git clone [(https://github.com/ranasuryansh14/HACKS-FORUM-Django-Website]
 cd hacks-forum
 Install dependencies
 
-# bash
+# Migrate
+bash
 Copy code
 python manage.py migrate
 Start the development server:
 
-# bash
+# Run Website
+bash
 Copy code
 python manage.py runserver
 Open your browser:
