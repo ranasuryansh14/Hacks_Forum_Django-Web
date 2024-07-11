@@ -29,28 +29,23 @@ Users can edit existing blog posts using this page, ensuring content remains up-
 ![Hacks-Forum Website](./image/blog.png)
 The home page dynamically displays latest updates, featured articles, and trending topics, ensuring visitors stay informed and engaged.
 
-Getting Started
+# Getting Started
 To run the Hacks-Forum website locally:
 
-Clone the repository:
+# Clone the repository:
 
 bash
 Copy code
 git clone [(https://github.com/ranasuryansh14/HACKS-FORUM-Django-Website]
 cd hacks-forum
-Install dependencies:
+Install dependencies
 
-bash
-Copy code
-pip install -r requirements.txt
-Run migrations:
-
-bash
+# bash
 Copy code
 python manage.py migrate
 Start the development server:
 
-bash
+# bash
 Copy code
 python manage.py runserver
 Open your browser:
