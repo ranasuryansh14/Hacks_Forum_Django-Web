@@ -27,6 +27,8 @@ urlpatterns = [
     # path('delete-blog/<id>', delete_blog, name='delete_blog'),
     path('publish/', publish,name ='publish'),
     path('update_blog/<int:id>/', update_blog, name='update_blog'),
+    path('login/', login_page, name='login'),
+    path('register/', register_page, name='register'),
 ]
 
 if settings.DEBUG:
