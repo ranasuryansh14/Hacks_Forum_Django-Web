@@ -10,6 +10,13 @@
  <form class="p-4 shadow-lg border rounded bg-light" method = "post" enctype="multipart/form-data">
 {% csrf_token %}
 <h2>LOGIN</h2>
+     {% if messages %}
+     <div class="alert alert-primary" role="alert">
+         {% for message in messages %}
+         {{ message }}
+         {% endfor %}
+     </div>
+     {% endif %}
 <div class="mb-3">
   <label for="formGroupExampleInput" class="form-label fs-6">Username</label>
   <input type="text" class="form-control" id="formGroupExampleInput" placeholder="@Username">
