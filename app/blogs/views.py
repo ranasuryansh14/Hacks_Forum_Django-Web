@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
-
+from django.contrib.auth import authenticate, login , logout
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home(request):
     if request.method == "POST":
@@ -25,6 +25,8 @@ def home(request):
     }
     return render(request, "home.html",context)
 
+
+@login_required(login_url="/login")
 def publish(request):
     if request.method == "POST":
         data = request.POST
@@ -69,51 +71,56 @@ def update_blog(request, id):
     context ={'blog': queryset}
     return render(request, "update_blog.html", context)
 def login_page(request):
-
-
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        if not User.objects.filter(username = username).exists():
+        # Debugging output
+        print(f"Username: {username}")
+        print(f"Password: {password}")
+
+        # Check if the username exists
+        if not User.objects.filter(username=username).exists():
             messages.error(request, "Invalid username")
             return redirect("/login/")
 
-        user = authenticate(request, username = username, password = password)
+        # Authenticate the user
+        user = authenticate(request, username=username, password=password)
 
         if user is None:
             messages.error(request, "Invalid password")
             return redirect("/login/")
 
-        else:
-            login(request, user)
-            return redirect("/publish/")
+        login(request, user)
+        return redirect("/publish/")
 
     return render(request, "login.html")
-def register_page(request):
 
+
+def logout_page(request):
+    logout(request)
+    return redirect("/login/")
+
+
+def register_page(request):
     if request.method == "POST":
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        user = User.objects.filter(username=username)
-
-        if user.exists():
+        if User.objects.filter(username=username).exists():
             messages.info(request, "Username already exists")
             return redirect("/register/")
 
-        user = User.objects.create(
+        user = User.objects.create_user(
             username=username,
+            password=password,
             first_name=first_name,
             last_name=last_name
         )
 
-        user.set_password(password)
-        user.save()
+        messages.success(request, "Account created successfully")
+        return redirect("/login/")
 
-        messages.info(request, "Account created successfully")
-
-        return redirect('/register/')
-    return render(request,"register.html")
+    return render(request, "register.html")

@@ -10,6 +10,11 @@
         .navbar-toggler-icon {
             background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
         }
+           .logout-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
     </style>
   </head>
 
@@ -25,11 +30,21 @@
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel" >Hack</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
+         <div class="logout-container">
+             {% if request.user.is_authenticated %}
+              <a href="/logout/" class="btn btn-outline-danger" type="submit">Logout</a>
+              {% else %}
+              <a href="/login/" class="btn btn-outline-success" type="submit">Login</a>
+             {% endif %}
+         </div>
+        <div class="User">
+            <h6>User -{{request.user}}</h6>
+        </div>
       <div class="offcanvas-body"  style="background-color: #e3f2fd;">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link active" aria-current="page" href="#">Home</a>-->
+<!--          </li>-->
           <li class="nav-item">
             <a class="nav-link" href="publish/">Publish Blogs</a>
           </li>
